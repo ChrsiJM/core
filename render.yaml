@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: gibbon-school
+    env: docker
+    plan: free
+    branch: main
+    dockerfilePath: Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: DB_HOST
+        value: db4free.net
+      - key: DB_PORT
+        value: 3306
+      - key: DB_NAME
+        value: your_db_name_here
+      - key: DB_USER
+        value: your_db_user_here
+      - key: DB_PASS
+        value: your_db_password_here

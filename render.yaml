@@ -4,7 +4,7 @@ services:
     env: docker
     plan: free
     branch: v30.0.00
-    dockerfilePath: Dockerfile
+    dockerfilePath: Dockerfile         # Gibbon app Dockerfile
     autoDeploy: true
     envVars:
       - key: DB_HOST
@@ -23,9 +23,9 @@ services:
     env: docker
     plan: free
     branch: v30.0.00
-    dockerfilePath: Dockerfile
+    dockerfilePath: Dockerfile.mysql   # MySQL Dockerfile
     buildFilter:
       paths:
         - init.sql
     autoDeploy: false
-    startCommand: ""  # MySQL Docker image starts automatically
+    startCommand: ""

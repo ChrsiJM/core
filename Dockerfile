@@ -1,6 +1,6 @@
 FROM php:8.1-apache
 
-# Install system dependencies and PHP extensions
+# Install PHP extensions
 RUN apt-get update && apt-get install -y \
     unzip \
     curl \
@@ -10,11 +10,9 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     libicu-dev \
-    libgettextpo-dev \
     libonig-dev \
+    gettext \
     zlib1g-dev \
-    libxml2-dev \
-    libxslt1-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
         pdo \
@@ -26,23 +24,21 @@ RUN apt-get update && apt-get install -y \
         gettext \
         bcmath
 
-# Enable Apache mod_rewrite
+# Enable Apache rewrite
 RUN a2enmod rewrite
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy app files
+# Copy app
 COPY . /var/www/html/
-
-# Set working directory
 WORKDIR /var/www/html/
 
-# Run composer to install dependencies
-RUN composer install --no-dev --prefer-dist --optimize-autoloader
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Expose port
 EXPOSE 80
+

@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: gibbon-school
+    name: gibbon-app
     env: docker
     plan: free
     branch: main
@@ -8,12 +8,24 @@ services:
     autoDeploy: true
     envVars:
       - key: DB_HOST
-        value: db4free.net
+        value: mysql-service
       - key: DB_PORT
         value: 3306
       - key: DB_NAME
-        value: gibbon_db
+        value: gibbon
       - key: DB_USER
         value: gibbon
       - key: DB_PASS
-        value: 133600Cj.
+        value: gibbonpass
+
+  - type: private
+    name: mysql-service
+    env: docker
+    plan: free
+    branch: main
+    dockerfilePath: Dockerfile
+    buildFilter:
+      paths:
+        - init.sql
+    buildCommand: ""
+    startCommand: ""

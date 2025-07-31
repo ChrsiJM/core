@@ -3,7 +3,7 @@ services:
     name: gibbon-app
     env: docker
     plan: free
-    branch: main
+    branch: v30.0.00
     dockerfilePath: Dockerfile
     autoDeploy: true
     envVars:
@@ -22,7 +22,7 @@ services:
     name: mysql-service
     env: docker
     plan: free
-    branch: main
+    branch: v30.0.00
     dockerfilePath: Dockerfile
     buildFilter:
       paths:

@@ -18,7 +18,7 @@ services:
       - key: DB_PASS
         value: gibbonpass
 
-  - type: private
+  - type: worker
     name: mysql-service
     env: docker
     plan: free
@@ -27,5 +27,5 @@ services:
     buildFilter:
       paths:
         - init.sql
-    buildCommand: ""
-    startCommand: ""
+    autoDeploy: false
+    startCommand: ""  # MySQL Docker image starts automatically

@@ -12,8 +12,8 @@ services:
       - key: DB_PORT
         value: 3306
       - key: DB_NAME
-        value: your_db_name_here
+        value: gibbon_db
       - key: DB_USER
-        value: your_db_user_here
+        value: gibbon
       - key: DB_PASS
-        value: your_db_password_here
+        value: 133600Cj.

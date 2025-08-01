@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: gibbon-app
+    name: gibbon-school
     env: docker
     plan: free
     branch: v30.0.00

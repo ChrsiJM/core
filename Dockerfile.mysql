@@ -1,0 +1,8 @@
+FROM mysql:8.0
+
+ENV MYSQL_ROOT_PASSWORD=rootpass
+ENV MYSQL_DATABASE=gibbon
+ENV MYSQL_USER=gibbon
+ENV MYSQL_PASSWORD=gibbonpass
+
+COPY init.sql /docker-entrypoint-initdb.d/
